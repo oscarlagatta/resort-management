@@ -1,68 +1,82 @@
-# The Wild Oasis Project
 
-Project Requirements
+![Wild Oasis Logo](/public/logo-dark.png)
 
-    - The users of the app are hotel employees; they must be logged into the app to perform tasks.
-    - New users can only be signed up within the application to ensure that only actual hotel employees can create accounts.
-    - Users should be able to upload an avatar, and change their name and password.
-    - The app needs a table view displaying all cabins, showing the cabin's photo, name, capacity, price, and current discount.
-    - Users should be able to update or delete a cabin and create new cabins.
-    - The app needs a table view displaying all bookings, including arrival and departure dates, status, paid amount, and details on cabins and guests.
-    - The booking status can be "unconfirmed," "checked in," or "checked out." The table should be filterable by this status.
-    - Other booking data includes: number of guests, number of nights, guest observations, whether they booked breakfast, and the breakfast price.
-    - Users should be able to delete, check in, or check out a booking as the guests arrive (no editing necessary for now).
-    - Bookings may not have been paid yet upon guest arrival; upon check-in, users need to accept payments outside the app and then confirm that payment has been received in the app.
-    - Upon checking in, guests should have the option to add breakfast for the entire stay, if they hadn’t already.
-    - Guest data should include full name, email, national ID, nationality, and country flag for easy identification.
-    - The initial app screen should be a dashboard, to display important information for 7, 30, and 90 days:
-       - A list of guests checking in and out on the current day, with the ability for users to perform these tasks from the dashboard.
-       - Statistics on recent booking sales, check-ins, and occupancy rate.
-       - A chart showing all daily hotel sales, including total and extras sales.
-       - A chart showing statistics on stay durations, an important metric for the hotel.
-    - Users should be able to define a few application-wide settings such as breakfast price, minimum and maximum nights per booking, and maximum guests per booking.
-    - The app needs a dark mode.
 
-Features and Pages
+## Requirements
 
-    - Bookings
-    - Cabins
-    - Guests
-    - Dashboard
-    - Check-in and out
-    - App settings
-    - Authentication
+### User Authentication and Management
+- **Access Control:** Only hotel employees can use the app, requiring login credentials to access functionalities.
+- **Account Creation:** Employee accounts are created internally to ensure authenticity.
+- **Profile Customization:** Employees can upload avatars, change their names, and reset passwords.
 
-Necessary Pages
+### Cabin Management
+- **Cabin Listings:** Display cabins in a table with photos, names, capacities, prices, and current discounts.
+- **Cabin Operations:** Employees can add, update, or delete cabin information.
 
-    - Dashboard: /dashboard
-    - Bookings: /bookings
-    - Cabins: /cabins
-    - Booking Check-in
-    - User Sign Up: /users
-    - Login: /login
-    - Account Settings: /account
+### Booking Management
+- **Booking Overview:** Show all bookings in a table, including details like arrival and departure dates, booking status, payment status, and detailed guest and cabin information.
+- **Status Filters:** Filter bookings by status ('unconfirmed', 'checked in', 'checked out').
+- **Booking Adjustments:** No editing of bookings; only delete, check in, or check out functions are available as guests arrive.
+- **Payment Handling:** Manage payments received outside the app and confirm them within the app.
+- **Breakfast Option:** Guests can add breakfast for their entire stay upon check-in if not pre-booked.
 
-Technical Decisions
+### Guest Information
+- **Guest Details:** Store and display information such as full name, email, national ID, nationality, and country flag.
 
-Client-Side Rendering (CSR) with Plain React
+### Dashboard and Reporting
+- **Initial Screen:** The dashboard shows crucial information for the day, 30 days, and 90 days.
+    - **Daily Activities:** List and manage daily guest check-ins and check-outs directly from the dashboard.
+    - **Sales and Occupancy Statistics:** Include recent booking sales and occupancy rates.
+    - **Revenue Charts:** Display charts of daily hotel sales (total and extras).
+    - **Duration Statistics:** Analyze guest stay durations through graphical representations.
 
-    - Single-Page Applications (SPAs)
-    - All HTML is rendered on the client.
-    - JavaScript must be downloaded before apps start running, which can affect performance.
-    - One perfect use case: apps used internally as tools within companies, entirely hidden behind a login.
+### Application Settings
+- **Configurable Settings:** Allow modification of settings like breakfast price, minimum and maximum nights per booking, and maximum number of guests per booking.
+- **Appearance:** Implement a dark mode for user interface preference.
 
-Server-Side Rendering (SSR) with Framework (Next.js or Remix)
 
-    - Used to build Multi-page Applications (MPAs).
-    - Some HTML can be rendered on the server.
-    - More performance-efficient as less JavaScript needs to be downloaded.
-    - The React team is increasingly moving in this direction.
 
-Technology Decisions
+## Features
 
-    - Routing: React Router
-    - Styling: Styled Components, a popular method of writing component-scoped CSS directly within JavaScript.
-    - State Management: React Query for remote state management, featuring caching, automatic re-fetching, prefetching, and offline support. Alternatives include SWR and RTK Query, with React Query being the most popular.
-    - UI State Management: Minimal usage; will use the Context API.
-    - Form Management: React Hook Form, which simplifies handling of large forms including manual state creation and error management.
-    - Other Technologies: React Icons, React Hot Toast, Recharts, date-fns, Supabase.
+### Authentication
+- **Login/Logout:** Secure authentication system for hotel employees.
+- **User Registration:** Restricted to internal sign-ups within the application.
+- **Profile Management:** Users can upload avatars, and change their names and passwords.
+
+### Cabins
+- **Cabin Management:** Add, update, or delete cabin listings.
+- **Display:** View all cabins in a table format with details such as photo, name, capacity, price, and current discounts.
+
+### Bookings
+- **Booking Operations:** Create, view, and delete bookings. Perform check-ins and check-outs.
+- **Booking Details:** Manage details like guest numbers, nights, observations, and breakfast options.
+- **Payment Tracking:** Track payments at check-in, confirm receipt of payments made outside the app.
+- **Status Filtering:** Filter bookings by status (unconfirmed, checked in, checked out).
+
+### Dashboard
+- **Daily Overview:** Display guests checking in and out on the current day.
+- **Sales and Occupancy Statistics:** Visualize booking sales, occupancy rates, and other important metrics.
+- **Charts:** Graphical representations of hotel sales and stay durations.
+
+### Settings
+- **Application Settings:** Define application-wide settings such as breakfast price and booking rules.
+- **Dark Mode:** Toggle between light and dark themes for the app.
+
+## Pages
+
+- **Dashboard:** `/dashboard`
+- **Bookings:** `/bookings`
+- **Cabins:** `/cabins`
+- **Booking Check-in:** Manage check-in processes.
+- **User Sign Up:** `/users`
+- **Login:** `/login`
+- **Account Settings:** `/account`
+
+## Technology Stack
+
+- **Framework:** React.
+- **Routing:** React Router.
+- **Styling:** Styled Components for scoped CSS within JavaScript components.
+- **State Management:** React Query for remote data management; Context API for UI state.
+- **Form Management:** React Hook Form for efficient form handling.
+- **Additional Tools:** React Icons, React Hot Toast, Recharts, date-fns, and Supabase for backend integration.
