@@ -1,5 +1,6 @@
 
-![Wild Oasis Logo](/public/logo-dark.png)
+![Wild Oasis Logo](/public/logo-dark.png)  <img src="https://raw.githubusercontent.com/react-icons/react-icons/master/react-icons.svg" width="120" alt="React Icons">
+
 
 
 ## Requirements
