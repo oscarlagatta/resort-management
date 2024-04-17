@@ -1,5 +1,3 @@
-import styled from "styled-components";
-
 import Input from "../../ui/Input";
 import Form from "../../ui/Form";
 import Button from "../../ui/Button";
@@ -61,13 +59,13 @@ function CreateCabinForm() {
                 id="maxCapacity"
                 disabled={isCreating}
 
-                   {...register("maxCapacity", {
-                       required: 'This field is required',
-                       min: {
-                           value: 1,
-                           message: 'Capacity should be at least 1'
-                       }
-                   })}/>
+                {...register("maxCapacity", {
+                    required: 'This field is required',
+                    min: {
+                        value: 1,
+                        message: 'Capacity should be at least 1'
+                    }
+                })}/>
         </FormRow>
 
         <FormRow label="Regular price" error={errors?.regularPrice?.message}>
