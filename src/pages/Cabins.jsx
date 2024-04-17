@@ -2,7 +2,7 @@ import Heading from "../ui/Heading";
 import Row from "../ui/Row";
 import {useEffect} from "react";
 import {getCabins} from "../services/apiCabins.js";
-import logo from "../ui/Logo.jsx";
+
 
 function Cabins() {
 
