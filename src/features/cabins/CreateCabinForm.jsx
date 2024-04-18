@@ -13,8 +13,8 @@ import FormRow from "../../ui/FormRow.jsx";
 function CreateCabinForm({cabinToEdit = {}}) {
 
     // grab values out of the cabinToEdit prop
-    const {id: editId, ...editValues} = cabinToEdit;
-
+    const {id: editId, ...editValues} = cabinToEdit; // ok
+    // are we using the form to edit or to add a cabin ?
     // If there is an editId it will then be converted to True
     const isEditSession = Boolean(editId);
 
@@ -22,6 +22,7 @@ function CreateCabinForm({cabinToEdit = {}}) {
         reset, register, handleSubmit, getValues,
         formState
     } = useForm({
+        // set the form values if there is Edit session
         defaultValues: isEditSession ? editValues : {}
     });
 
@@ -41,7 +42,10 @@ function CreateCabinForm({cabinToEdit = {}}) {
 
 
     const {mutate: editCabin, isLoading: isEditing} = useMutation({
-        mutationFn: ({ newCabinData, id }) => {
+        // in React Query we can only pass one element to the mutationFn as
+        // parameter. So the only argument we use is the object with newCabinData and id.
+
+        mutationFn: ({ newCabinData, editId }) => {
             return createEditCabin(newCabinData, editId)},
         onSuccess: () => {
             toast.success('Cabin successfully edited');
@@ -54,15 +58,20 @@ function CreateCabinForm({cabinToEdit = {}}) {
     });
 
 
+    // combines isCreating and isEditing
     const isWorking = isCreating || isEditing;
 
 
     const {errors} = formState;
-    console.log(errors)
 
     function onSubmit(data) {
 
         console.log(`data ${JSON.stringify(data)}`);
+
+        // we need to check if it's a string with the url from supabaseUrl,
+        // which means is not changing the image for the cabin,
+        // or the image as File list, because is a new image being uploaded.
+        // If it's the FileList we take the data.image[0]
         const image = typeof data.image === 'string' ? data.image : data.image[0];
 
         if (isEditSession) {
@@ -155,7 +164,7 @@ function CreateCabinForm({cabinToEdit = {}}) {
                 Cancel
             </Button>
             <Button disabled={isWorking}>{
-                isEditSession ? 'Update Cabin' : 'Create New Cabin'
+                isEditSession ? 'Edit Cabin' : 'Create New Cabin'
             }
             </Button>
         </FormRow>

@@ -98,13 +98,24 @@ export async function deleteCabin(id) {
 //     return data;
 //
 // }
+
+
+
 export async function createEditCabin(newCabin, id) {
+
+    // check if is new image or existing(checking the supabase url).
+    // Also, newCabin.image might not be a string, and we won't be able to
+    // call the function startsWith() so we do optional chaining.
     const hasImagePath = newCabin.image?.startsWith?.(supabaseUrl);
+
+    // If the cabin name contain any slashes then supabase will
+    // create folders based on that; so we need to replace all '/'
 
     const imageName = `${Math.random()}-${newCabin.image.name}`.replaceAll(
         "/",
         ""
     );
+
     const imagePath = hasImagePath
         ? newCabin.image
         : `${supabaseUrl}/storage/v1/object/public/cabin-images/${imageName}`;
@@ -114,12 +125,15 @@ export async function createEditCabin(newCabin, id) {
 
     // A) CREATE
     if (!id) {
-        query = query.insert([{ ...newCabin, image: imagePath }])
+        query = query
+            .insert([{ ...newCabin, image: imagePath }])
     }
 
     // B) EDIT
     if (id) {
-        query = query.update({ ...newCabin, image: imagePath }).eq("id", id);
+        query = query
+            .update({ ...newCabin, image: imagePath })
+            .eq("id", id);
     }
 
     const { data, error } = await query.select().single();
