@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import Spinner from "../../ui/Spinner.jsx";
 import CabinRow from "./CabinRow.jsx";
 import {useCabins} from "./useCabins.js";
@@ -24,12 +23,15 @@ const CabinTable = () => {
 
             </Table.Header>
 
-            {cabins.map(
-                (cabin) =>
+            <Table.Body
+                data={cabins}
+                render={(cabin) => (
                     <CabinRow
                         cabin={cabin}
                         key={cabin.id}
-                    />)}
+                    />)
+                }
+            />
         </Table>
 
     );

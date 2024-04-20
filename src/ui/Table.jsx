@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {createContext, useContext} from "react";
 
+
 const StyledTable = styled.div`
     border: 1px solid var(--color-grey-200);
 
@@ -37,17 +38,27 @@ const StyledRow = styled(CommonRow)`
     }
 `;
 
+const StyledBody = styled.section`
+    margin: 0.4rem 0;
+`;
+
 const Footer = styled.footer`
-    background-color: var(--color-grey-50);
-    display: flex;
-    justify-content: center;
-    padding: 1.2rem;
+  background-color: var(--color-grey-50);
+  display: flex;
+  justify-content: center;
+  padding: 1.2rem;
 
-    /* This will hide the footer when it contains no child elements. Possible thanks to the parent selector :has 🎉 */
+  /* This will hide the footer when it contains no child elements. Possible thanks to the parent selector :has 🎉 */
+  &:not(:has(*)) {
+    display: none;
+  }
+`;
 
-    &:not(:has(*)) {
-        display: none;
-    }
+const Empty = styled.p`
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-align: center;
+  margin: 2.4rem;
 `;
 
 const TableContext = createContext();
@@ -80,7 +91,13 @@ function Row({children}) {
     </StyledRow>
 }
 
-function Body({children}) {
+function Body({data, render}) {
+    if(!data.length) return <Empty>No data to show at the moment</Empty>;
+    return (
+        <StyledBody>
+            {data.map(render)}
+        </StyledBody>
+    )
 }
 
 Table.Header = Header;
