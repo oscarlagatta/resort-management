@@ -2,6 +2,7 @@ import Spinner from "../../ui/Spinner.jsx";
 import CabinRow from "./CabinRow.jsx";
 import {useCabins} from "./useCabins.js";
 import Table from "../../ui/Table.jsx";
+import Menus from "../../ui/Menus.jsx";
 
 const CabinTable = () => {
 
@@ -11,7 +12,7 @@ const CabinTable = () => {
 
 
     return (
-
+    <Menus>
         <Table columns='0.6fr 1.8fr 2.2fr 1fr 1fr 1fr'>
             <Table.Header>
                 <div></div>
@@ -33,6 +34,7 @@ const CabinTable = () => {
                 }
             />
         </Table>
+    </Menus>
 
     );
 }
