@@ -64,7 +64,6 @@ function CreateCabinForm({cabinToEdit = {}, onCloseModal}) {
         console.log('errors', errors);
     }
 
-
     return (
         <Form onSubmit={handleSubmit(onSubmit, onError)}
               type={onCloseModal ? 'modal' : 'regular'}>
