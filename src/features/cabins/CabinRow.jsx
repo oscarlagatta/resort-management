@@ -49,7 +49,6 @@ const CabinRow = ({cabin}) => {
         createCabin({
             name: `Copy of ${name}`, maxCapacity, regularPrice, discount, image, description,
         });
-
     }
 
     return (
@@ -94,20 +93,8 @@ const CabinRow = ({cabin}) => {
                         </Modal.Window>
                     </Menus.Menu>
                 </Modal>
-
-                {/*<Menus.Menu>*/}
-                {/*    <Menus.Toggle id={cabinId}>*/}
-                {/*        <Menus.List id={cabinId}>*/}
-                {/*            <Menus.Button icon={<HiSquare2Stack/>} onClick={handleDuplicate}>Duplicate</Menus.Button>*/}
-                {/*            <Menus.Button icon={<HiPencil/>}>Edit</Menus.Button>*/}
-                {/*            <Menus.Button icon={<HiTrash/>}>Delete</Menus.Button>*/}
-                {/*        </Menus.List>*/}
-                {/*    </Menus.Toggle>*/}
-                {/*</Menus.Menu>*/}
             </div>
         </Table.Row>
-
-
     )
 }
 export default CabinRow;

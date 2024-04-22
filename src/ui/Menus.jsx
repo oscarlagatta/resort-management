@@ -114,14 +114,12 @@ export const Toggle = ({id}) => {
 }
 
 
-
 export const List = ({id, children}) => {
-    const {openId, position, close } = useContext(MenusContext);
+    const {openId, position, close} = useContext(MenusContext);
 
     const ref = useOutsideClick(close, true);
 
-    if(openId !== id) return null;
-
+    if (openId !== id) return null;
 
     // PORTAL, element will float on top of the UI
     return (
@@ -135,22 +133,20 @@ export const List = ({id, children}) => {
 
 export const Button = ({children, icon, onClick}) => {
 
-    const { close } = useContext(MenusContext);
+    const {close} = useContext(MenusContext);
 
     function handleClick() {
         onClick?.();
-
         close()
     }
 
     return (
-            <li>
-                <StyledButton onClick={handleClick}>
-                    {icon}
-                    <span>{children}</span>
-                </StyledButton>
-            </li>
-
+        <li>
+            <StyledButton onClick={handleClick}>
+                {icon}
+                <span>{children}</span>
+            </StyledButton>
+        </li>
     )
 }
 
