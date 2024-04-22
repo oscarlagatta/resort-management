@@ -3,6 +3,7 @@ import Row from "../ui/Row";
 import {Fragment} from "react";
 import CabinTable from "../features/cabins/CabinTable.jsx";
 import AddCabin from "../features/cabins/AddCabin.jsx";
+import {CabinTableOperations} from "../features/cabins/CabinTableOperations.jsx";
 
 
 function Cabins() {
@@ -11,11 +12,12 @@ function Cabins() {
         <Fragment>
             <Row type="horizontal">
                 <Heading as="h1">All cabins</Heading>
+                <CabinTableOperations/>
             </Row>
             <Row>
                 <CabinTable/>
 
-                <AddCabin />
+                <AddCabin/>
             </Row>
         </Fragment>
 
