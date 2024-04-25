@@ -38,7 +38,7 @@ const Discount = styled.div`
 
 const CabinRow = ({cabin}) => {
 
-    const {createCabin} = useCreateCabin();
+    const {createCabin, isCreating} = useCreateCabin();
 
     const {isDeleting, deleteCabin} = useDeleteCabin();
 
@@ -65,7 +65,9 @@ const CabinRow = ({cabin}) => {
                         <Menus.Toggle id={cabinId}/>
                         <Menus.List id={cabinId}>
                             <Menus.Button icon={<HiSquare2Stack/>}
-                                          onClick={handleDuplicate}>Duplicate</Menus.Button>
+                                          onClick={handleDuplicate}
+                                          disabled={isCreating}
+                            >Duplicate</Menus.Button>
 
                             {/*trigger modal window to open, then goes inside the Modal.Open*/}
                             <Modal.Open opens='edit'>
