@@ -3,6 +3,7 @@ import DashboardBox from "./DashboardBox";
 import {Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 import {useDarkMode} from "../context/DarkModeContext.jsx";
 import {eachDayOfInterval, format, isSameDay, subDays} from "date-fns";
+import Heading from "../../ui/Heading.jsx";
 
 const StyledSalesChart = styled(DashboardBox)`
     grid-column: 1 / -1;
@@ -86,10 +87,10 @@ export function SalesChart({bookings, numDays}) {
 
     return (
         <StyledSalesChart>
-            <heading as="h2">
+            <Heading as="h2">
                 Sales from {format(allDates.at(0), 'MMM dd yyyy')}
                 &mdash;  {format(allDates.at(-1), 'MMM dd yyyy')}
-            </heading>
+            </Heading>
             <ResponsiveContainer height={300}>
                 <AreaChart data={data}>
                     <XAxis dataKey='label' tick={{fill: colors.text}}
